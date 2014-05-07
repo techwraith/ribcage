@@ -1,0 +1,26 @@
+{
+  "name": "ribcage",
+  "version": "0.0.0",
+  "description": "A cli wrapper for ribcage-gen, ribcage-preview, and ribcage-docs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Techwraith/ribcage.git"
+  },
+  "keywords": [
+    "ribcage",
+    "atomify",
+    "docs",
+    "components",
+    "gen"
+  ],
+  "author": "techwraith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Techwraith/ribcage/issues"
+  },
+  "homepage": "https://github.com/Techwraith/ribcage"
+}

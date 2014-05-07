@@ -15,5 +15,5 @@ switch (process.argv[2]) {
     })
     break
   default:
-    console.log(fs.readFileSync('./help.txt', {encoding: 'utf8'}))
+    fs.createReadStream(path.join(__dirname, 'help.txt')).pipe(process.stdout)
 }

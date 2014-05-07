@@ -3,6 +3,7 @@
 var preview = require('ribcage-preview')
   , gen = require('ribcage-gen')
   , path = require('path')
+  , fs = require('fs')
 
 switch (process.argv[2]) {
   case 'preview':

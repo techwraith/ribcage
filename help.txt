@@ -1,0 +1,9 @@
+Usage: ribcage <command>
+
+Commands:
+
+gen <name>
+  create a component named <name>
+
+preview <dir>
+  preview the passed in <dir> (must be a valid component)

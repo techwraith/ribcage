@@ -1,6 +1,6 @@
 {
   "name": "ribcage",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "A cli wrapper for ribcage-gen, ribcage-preview, and ribcage-docs",
   "main": "index.js",
   "bin": {
@@ -28,6 +28,6 @@
   "homepage": "https://github.com/Techwraith/ribcage",
   "dependencies": {
     "ribcage-gen": "^0.1.4",
-    "ribcage-preview": "^0.0.20"
+    "ribcage-preview": "^0.1.0"
   }
 }

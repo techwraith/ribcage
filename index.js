@@ -17,6 +17,7 @@ switch (process.argv[2]) {
     break
   case 'docs':
     docs(process.argv[3] || 'components')
+    break
   default:
     fs.createReadStream(path.join(__dirname, 'help.txt')).pipe(process.stdout)
 }

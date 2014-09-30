@@ -13,8 +13,9 @@ switch (process.argv[2]) {
     preview(path.join(process.cwd(), process.argv[3]))
     break
   case 'gen':
-    gen({target: argv._[0], type: type}, function () {
-      console.log('created')
+    gen({target: argv._[1], type: type}, function (err) {
+      if (err) console.error(err)
+      else console.log('created')
     })
     break
   case 'docs':

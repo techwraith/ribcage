@@ -27,8 +27,9 @@
   },
   "homepage": "https://github.com/Techwraith/ribcage",
   "dependencies": {
+    "minimist": "^1.1.0",
+    "ribcage-docs": "^1.0.0",
     "ribcage-gen": "^1.0.0",
-    "ribcage-preview": "^2.0.0",
-    "ribcage-docs": "^1.0.0"
+    "ribcage-preview": "^2.0.0"
   }
 }

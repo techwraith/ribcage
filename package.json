@@ -1,6 +1,6 @@
 {
   "name": "ribcage",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "A cli wrapper for ribcage-gen, ribcage-preview, and ribcage-docs",
   "main": "index.js",
   "bin": {

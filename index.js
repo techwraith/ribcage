@@ -13,9 +13,13 @@ switch (process.argv[2]) {
     preview(path.join(process.cwd(), process.argv[3]))
     break
   case 'gen':
-    gen({target: argv._[1], type: type}, function (err) {
+    gen({target: argv._[1], type: type}, function (err){
       if (err) console.error(err)
-      else console.log('created')
+      else {
+        console.info('created. starting preview server')
+        console.info('ribcage preview', argv._[1])
+        preview(path.join(process.cwd(), argv._[1]))
+      }
     })
     break
   case 'docs':

@@ -8,7 +8,7 @@ var preview = require('ribcage-preview')
   , fs = require('fs')
   , type = argv.t || argv.type || 'backbone'
   , exec = require('child_process').exec
-  , postGenCmd = 'npm install --prefix ' + path.join(process.cwd())
+  , postGenCmd = 'npm install --prefix ' + path.join(process.cwd(), argv._[1])
 
 // FIXME: Add package.json for pane and react and do
 // `npm install` for those too

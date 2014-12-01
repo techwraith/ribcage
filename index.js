@@ -8,6 +8,11 @@ var preview = require('ribcage-preview')
   , fs = require('fs')
   , type = argv.t || argv.type || 'backbone'
   , exec = require('child_process').exec
+  , postGenCmd = 'npm install --prefix ' + path.join(process.cwd())
+
+// FIXME: Add package.json for pane and react and do
+// `npm install` for those too
+if (type != 'backbone') postGenCmd = 'true'
 
 switch (process.argv[2]) {
   case 'preview':
@@ -17,8 +22,7 @@ switch (process.argv[2]) {
     gen({target: argv._[1], type: type}, function (err){
       if (err) console.error(err)
       else {
-        exec('npm install --prefix ' + path.join(process.cwd(), argv._[1]),
-            function (err, stdout, stderr) {
+        exec(postGenCmd, function (err, stdout, stderr) {
           if (err) console.error(err)
           else {
             if (stderr) console.error(stderr)

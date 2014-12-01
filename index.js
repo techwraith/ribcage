@@ -7,6 +7,7 @@ var preview = require('ribcage-preview')
   , argv = require('minimist')(process.argv.slice(2))
   , fs = require('fs')
   , type = argv.t || argv.type || 'backbone'
+  , exec = require('child_process').exec
 
 switch (process.argv[2]) {
   case 'preview':
@@ -16,9 +17,16 @@ switch (process.argv[2]) {
     gen({target: argv._[1], type: type}, function (err){
       if (err) console.error(err)
       else {
-        console.info('created. starting preview server')
-        console.info('ribcage preview', argv._[1])
-        preview(path.join(process.cwd(), argv._[1]))
+        exec('npm install --prefix ' + path.join(process.cwd(), argv._[1]),
+            function (err, stdout, stderr) {
+          if (err) console.error(err)
+          else {
+            if (stderr) console.error(stderr)
+            console.info('created. starting preview server')
+            console.info('ribcage preview', argv._[1])
+            preview(path.join(process.cwd(), argv._[1]))
+          }
+        });
       }
     })
     break

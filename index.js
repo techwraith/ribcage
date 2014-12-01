@@ -8,11 +8,15 @@ var preview = require('ribcage-preview')
   , fs = require('fs')
   , type = argv.t || argv.type || 'backbone'
   , exec = require('child_process').exec
-  , postGenCmd = 'npm install --prefix ' + path.join(process.cwd(), argv._[1])
-
-// FIXME: Add package.json for pane and react and do
-// `npm install` for those too
-if (type != 'backbone') postGenCmd = 'true'
+  , deps = [ // FIXME: Maybe this should go in a config file
+      "ampersand-state"
+    , "backbone"
+    , "handlebars"
+    , "hbsfy"
+    , "jquery"
+    , "lodash"
+    , "ribcage-view"
+    ]
 
 switch (process.argv[2]) {
   case 'preview':
@@ -22,10 +26,13 @@ switch (process.argv[2]) {
     gen({target: argv._[1], type: type}, function (err){
       if (err) console.error(err)
       else {
-        exec(postGenCmd, function (err, stdout, stderr) {
+        console.log('Installing needed dependencies...');
+        exec('npm install --save ' + deps.join(' '),
+            function (err, stdout, stderr) {
           if (err) console.error(err)
           else {
             if (stderr) console.error(stderr)
+            console.log(stdout);
             console.info('created. starting preview server')
             console.info('ribcage preview', argv._[1])
             preview(path.join(process.cwd(), argv._[1]))

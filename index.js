@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+'use strict'
 
 var preview = require('ribcage-preview')
   , gen = require('ribcage-gen')
@@ -7,10 +8,17 @@ var preview = require('ribcage-preview')
   , argv = require('minimist')(process.argv.slice(2))
   , fs = require('fs')
   , type = argv.t || argv.type || 'backbone'
+  , cwd = process.cwd()
+  , options
 
 switch (process.argv[2]) {
   case 'preview':
-    preview(path.join(process.cwd(), process.argv[3]))
+    options = {
+      dir: path.join(cwd, argv._[1])
+    , debug: !argv['no-debug']
+    , enableClientJSX: argv.s || argv['client-jsx']
+    }
+    preview(options)
     break
   case 'gen':
     gen({target: argv._[1], type: type}, function (err){
@@ -18,12 +26,12 @@ switch (process.argv[2]) {
       else {
         console.info('created. starting preview server')
         console.info('ribcage preview', argv._[1])
-        preview(path.join(process.cwd(), argv._[1]))
+        preview(path.join(cwd, argv._[1]))
       }
     })
     break
   case 'docs':
-    docs(process.argv[3] || 'components')
+    docs(argv._[1] || 'components')
     break
   default:
     fs.createReadStream(path.join(__dirname, 'help.txt')).pipe(process.stdout)

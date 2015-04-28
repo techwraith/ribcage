@@ -15,13 +15,15 @@ switch (process.argv[2]) {
   case 'preview':
     options = {
       dir: path.join(cwd, argv._[1])
-    , debug: !argv['no-debug']
-    , enableClientJSX: argv.s || argv['client-jsx']
+      , debug: !argv['no-debug']
+      , enableClientJSX: argv.s || argv['client-jsx']
+      , enableReactRouter: argv.r || argv['react-router']
+      , autoprefix: argv.autoprefix
     }
     preview(options)
     break
   case 'gen':
-    gen({target: argv._[1], type: type}, function (err){
+    gen({target: argv._[1], type: type}, function (err) {
       if (err) console.error(err)
       else {
         console.info('created. starting preview server')

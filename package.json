@@ -29,7 +29,7 @@
   "dependencies": {
     "minimist": "^1.1.0",
     "ribcage-docs": "^1.0.0",
-    "ribcage-gen": "^1.0.0",
+    "ribcage-gen": "^2.0.0",
     "ribcage-preview": "^3.0.1"
   }
 }
